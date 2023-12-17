@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Settings</title>
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" type="text/css" href="styles/adminPanel.css">
+	<link rel="stylesheet" type="text/css" href="styles/setting.css">
+	<script src="https://kit.fontawesome.com/abfccd6663.js" crossorigin="anonymous"></script>
+	<!-- Include SweetAlert library -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+</head>
+
+<body>
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">AdminPanel</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="/adminPage">
+					<i class='bx bxs-dashboard'></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="/addNews">
+					<i class='bx bxs-shopping-bag-alt'></i>
+					<span class="text">Add News</span>
+				</a>
+			</li>
+			<li>
+				<a href="/Analytics">
+					<i class='bx bxs-doughnut-chart'></i>
+					<span class="text">Analytics</span>
+				</a>
+			</li>
+			<li>
+				<a href="/allNews">
+					<i class='bx bxs-message-dots'></i>
+					<span class="text">All News</span>
+				</a>
+			</li>
+			<li>
+				<a href="/upcoming">
+					<i class='bx bxs-group'></i>
+					<span class="text">Upcoming Posts</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li class="active">
+				<a href="/setting">
+					<i class='bx bxs-cog'></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+			<li>
+				<a href="/logout" class="logout">
+					<i class='bx bxs-log-out-circle'></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a href="#" class="nav-link">Categories</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<!-- <a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a> -->
+			<a href="#" class="profile">
+				<% if(locals.post){ %>
+				<img src="/uploads/<%= post.admin_img %>">
+				<%  }else{ %>
+				<img src="images/people.png">
+				<% } %>
+
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1>Dashboard</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right'></i></li>
+						<li>
+							<a class="active" href="#">Settings</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+			<br>
+			<% if(locals.post){ %>
+			<form id="adminPostForm" method="post" action="/administrator/posts" enctype="multipart/form-data">
+				<div class="profile-container">
+					<div class="important-message">
+						<p>Always Enter Your Previous Password Or A New One For Any Changes</p>
+						<span class="close-icon" onclick="closeMessage()">&times;</span>
+					</div>
+					<br>
+					<input type="file" id="imageInput" name="admin_img" accept="image/*" onchange="previewImage(event)">
+
+					<label for="uploadButton" onclick="document.getElementById('imageInput').click()">
+						<div class="profile-picture" id="profilePicture">
+							<img src="/uploads/<%= post.admin_img %>" alt="Profile Picture">
+						</div>
+					</label>
+
+					<div class="profile-info">
+						<label for="name">Name:</label>
+						<input type="text" id="name" class="input-field" name="admin_name" placeholder="Full Name"
+							value="<%= post.admin_name %>">
+						<label for="email">Admin Id:</label>
+						<input type="text" id="email" class="input-field" name="admin_id"
+							placeholder="example@admin.secure.self" value="<%= post.admin_id %>">
+						<div class="password-container">
+							<label for="password">Password:</label>
+							<input type="password" name="admin_Pass" id="password" class="input-field"
+								oninput="checkPasswordStrength()" placeholder="Enter Previous One Or A New One">
+							<span class="password-toggle" onclick="togglePasswordVisibility()"
+								id="passwordToggle">&#x1F512;</span>
+						</div>
+						<div class="password-strength" id="passwordStrength"></div>
+						<div class="error-message" id="passwordError" style="margin-bottom: 10px;"></div>
+
+						<button type="submit" class="save-button" onclick="saveChanges()" id="saveButton" disabled>Save
+							Changes</button>
+					</div>
+				</div>
+			</form>
+			<% }else { %>
+			<form id="adminPostForm" method="post" action="/administrator/posts" enctype="multipart/form-data">
+				<div class="profile-container">
+					<div class="important-message">
+						<p>Always Enter Your Previous Password Or A New One For Any Changes</p>
+						<span class="close-icon" onclick="closeMessage()">&times;</span>
+					</div>
+					<br>
+					<input type="file" id="imageInput" name="admin_img" accept="image/*" onchange="previewImage(event)">
+
+					<label for="uploadButton" onclick="document.getElementById('imageInput').click()">
+						<div class="profile-picture" id="profilePicture">
+							<img src="/images/default_img.jpg" alt="Profile Picture">
+						</div>
+					</label>
+
+					<div class="profile-info">
+						<label for="name">Name:</label>
+						<input type="text" id="name" class="input-field" name="admin_name" placeholder="Full Name">
+						<label for="email">Admin Id:</label>
+						<input type="text" id="email" class="input-field" name="admin_id"
+							placeholder="example@admin.secure.self">
+						<div class="password-container">
+							<label for="password">Password:</label>
+							<input type="password" name="admin_Pass" id="password" class="input-field"
+								oninput="checkPasswordStrength()" placeholder="Enter password">
+							<span class="password-toggle" onclick="togglePasswordVisibility()"
+								id="passwordToggle">&#x1F512;</span>
+						</div>
+						<div class="password-strength" id="passwordStrength"></div>
+						<div class="error-message" id="passwordError" style="margin-bottom: 10px;"></div>
+
+						<button type="submit" class="save-button" onclick="saveChanges()" id="saveButton" disabled>Save
+							Changes</button>
+					</div>
+				</div>
+			</form>
+			<% } %>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<script>
+		// JavaScript function to close the important message
+		function closeMessage() {
+			const importantMessage = document.querySelector('.important-message');
+			importantMessage.style.display = 'none';
+		}
+	</script>
+	<script src="/assets/js/setting.js"></script>
+	<script src="/assets/js/admin.js"></script>
+
+</body>
+
+</html>

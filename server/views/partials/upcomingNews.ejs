@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upcoming News</title>
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" type="text/css" href="styles/adminPanel.css">
+	<link rel="stylesheet" type="text/css" href="styles/allNews.css">
+	<script src="https://kit.fontawesome.com/abfccd6663.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">AdminPanel</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="/adminPage">
+					<i class='bx bxs-dashboard'></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li>
+				<a href="/addNews">
+					<i class='bx bxs-shopping-bag-alt'></i>
+					<span class="text">Add News</span>
+				</a>
+			</li>
+			<li>
+				<a href="/Analytics">
+					<i class='bx bxs-doughnut-chart'></i>
+					<span class="text">Analytics</span>
+				</a>
+			</li>
+			<li >
+				<a href="/allNews">
+					<i class='bx bxs-message-dots'></i>
+					<span class="text">All News</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="#">
+					<i class='bx bxs-group'></i>
+					<span class="text">Upcoming Posts</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="/setting">
+					<i class='bx bxs-cog'></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+			<li>
+				<a href="/logout" class="logout">
+					<i class='bx bxs-log-out-circle'></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a href="#" class="nav-link">Categories</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<!-- <a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a> -->
+			<a href="#" class="profile">
+				<%  if(locals.allNews.admin_post){%>
+				<img src="/uploads/<%= allNews.admin_post.admin_img %>">
+				<%  }else{%>
+				<img src="images/people.png">
+				<%  }%>
+
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1><i class='bx bxs-news'></i>&nbsp;&nbsp;Upcoming Posts</h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right'></i></li>
+						<li>
+							<a class="active" href="#">Upcoming Posts</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<table>
+				<thead>
+					<tr>
+						<th class="content">No.</th>
+						<th class="content">Image</th>
+						<th class="content">Content</th>
+						<th class="content">Scheduled Publish Date</th>
+						<th class="content">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Sample data row (replace this with your actual data) -->
+					<% allNews.posts.forEach((post)=>{%>
+					<tr>
+						<%  if(post.news_No){%>
+						<td class="content"><%= post.news_No%></td>
+						<% } else{%>
+						<td class="content"> data not found </td>
+						<% } %>
+						<%  if(post.banner_img){%>
+						<td><img src="uploads\<%= post.banner_img%>" alt="Sample Image" width="100"></td>
+						<% } else{%>
+						<td><img src="images\image-not-found.jpg" alt="Sample Image" width="100"></td>
+						<% } %>
+						<td>
+							<%  if(post.title && post.content){%>
+							<div class="content" style="width: 800px;height: 150px;overflow:hidden;padding-right: 7px;">
+								<h3><%=post.title %></h3>
+
+								<p><%- post.content %></p>
+
+							</div>
+							<% } else{%>
+							<div class="content" style="width: 800px;height: 150px;overflow:hidden;">
+								data not found
+							</div>
+
+							<% } %>
+						</td>
+						<%  if(post.postDate && post.postTime){%>
+						<td class="content"><%= post.postDate %>,<%= post.postTime %></td>
+                        
+						<% }else{%>
+						<td class="content">data not found</td>
+						<% } %>
+						<td class="content">
+							<a href="/upcoming/edit/<%=post._id%>"><span class="edit content"><i
+										class="fa-regular fa-pen-to-square"></i></span></a>
+							<br><br>
+							<a href="/upcoming/api/posts/delete/<%=post._id%>" id="delete-item"
+								style="text-decoration: none;"><span class="delete content"><i
+										class="fa-solid fa-trash"></i></span></a>
+						</td>
+					</tr>
+					<% }) %>
+					<!-- Add more rows as needed -->
+				</tbody>
+			</table>
+			<br>
+			<div class="totalPage" style="display: none;"><%= allNews.totalPages %></div>
+
+			
+			<div class="container">
+			<div class="pagination">
+			<ul>
+				<% if(allNews.currPAge > 1) { %>
+					 <a href="/upcoming?page=<%=allNews.currPAge-1%>"><li class="btn">Before</li></a> 
+					 <% } %>
+				
+			<% for(let i = 1; i <= allNews.endingLink; i++) { %>
+				<% if(i === allNews.currPAge) { %>
+					<a class="selectedLink" href="/upcoming?page=<%=i%>"><li class="numb active"><%=i%></li></a> 
+				<% continue; %>
+			<% } %>
+			<a href="/upcoming?page=<%=i%>"><li class="numb"><%=i%></li></a>
+				<% } %>
+			
+				<% if(allNews.currPAge < allNews.totalPages) { %> <a href="/upcoming?page=<%=allNews.currPAge+1%>"><li class="btn">After</li></a> <% } %>
+
+				</ul>
+			  </div>
+			</div>
+
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+
+
+	<script src="assets/js/admin.js"></script>
+
+</body>
+</html>

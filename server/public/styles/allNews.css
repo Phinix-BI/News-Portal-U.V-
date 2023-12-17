@@ -1,0 +1,131 @@
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    
+    vertical-align: top;
+}
+td:nth-child(3){
+    /* width: 820px; */
+    text-align: left;
+
+}
+
+.edit, .delete {
+    cursor: pointer;
+}
+
+a{
+    color: black;
+}
+/* Responsive styles */
+@media (max-width: 900px) {
+    
+
+    th {
+        text-align: center;
+    }
+
+    .edit, .delete {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+th:nth-child(2),
+td:nth-child(2) {
+    display: none;
+}
+    
+}
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #c266db #f0ecec;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #f0ecec;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #c266db;
+    border-radius: 11px;
+    border: 3px solid #ffffff;
+  }
+
+  /* pagination css */
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items horizontally */
+    justify-content: center; /* Center items vertically */
+    /* height: 100vh; Set the container to full height of the viewport */
+  }
+
+  
+
+.pagination ul{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+  padding: 8px;
+  border-radius: 50px;
+  box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+}
+.pagination ul li{
+  color: #20B2AA;
+  list-style: none;
+  line-height: 45px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+}
+.pagination ul li.numb{
+  list-style: none;
+  height: 45px;
+  width: 45px;
+  margin: 0 3px;
+  line-height: 45px;
+  border-radius: 50%;
+}
+.pagination ul li.numb.first{
+  margin: 0px 3px 0 -5px;
+}
+.pagination ul li.numb.last{
+  margin: 0px -5px 0 3px;
+}
+.pagination ul li.dots{
+  font-size: 22px;
+  cursor: default;
+}
+.pagination ul li.btn{
+  padding: 0 20px;
+  border-radius: 50px;
+}
+.pagination li.active,
+.pagination ul li.numb:hover,
+.pagination ul li:first-child:hover,
+.pagination ul li:last-child:hover{
+  color: #fff;
+  background: #20B2AA;
+}

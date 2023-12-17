@@ -1,0 +1,31 @@
+{
+  "name": "newsportal",
+  "version": "1.0.0",
+  "description": "Creating a News Portal where anyone can visit and read the top News of the day",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"nodemon app.js\" \"nodemon newsApi.js\" \"mongod\" "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.5.1",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.2",
+    "concurrently": "^8.2.2",
+    "countapi-js": "^1.0.2",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "fs": "^0.0.1-security",
+    "mongodb": "^6.1.0",
+    "mongoose": "^7.6.1",
+    "multer": "^1.4.5-lts.1",
+    "nodemon": "^3.0.2",
+    "path": "^0.12.7",
+    "router": "^1.3.8"
+  }
+}

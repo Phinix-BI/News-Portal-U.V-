@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login Panel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+
+    <style>
+        .srouce {
+            text-align: center;
+            color: #ffffff;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body style="margin-top: 150px;">
+
+    <div class="form-container">
+
+        <div class="form-body">
+
+            <form class="the-form" method="post">
+
+                <label for="adminId">Admin Id</label>
+                <input type="email" name="adminId" id="adminId" placeholder="Enter your admin id" required>
+
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password" required>
+
+                <input type="submit" value="Log In" formaction="/submit">
+
+            </form>
+
+        </div><!-- FORM BODY-->
+
+    </div><!-- FORM CONTAINER -->
+
+
+</body>
+
+</html>

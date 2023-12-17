@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Serif:ital,opsz,wght@0,8..144,700;1,8..144,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@700&family=Poppins:wght@300;400;600&display=swap');
+
+
+.header {
+    text-align: center;
+    padding: 20px;
+}
+
+.main_title {
+
+    font-family: 'Roboto Serif', serif;
+    font-weight: 700;
+    font-size: 40px;
+    font-style: italic;
+    color: #FE0000;
+}
+
+.admin_login {
+    font-family: 'Roboto', serif;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+/*  */
+body {
+    margin: 0 ;
+    padding: 0;
+    border: 0;
+   
+}
+
+/* news content */
+
+.content-box {
+    margin: 0 100px;
+    background-color: #f2efef;
+}
+
+.card-news {
+    width: 100%;
+}
+
+
+.newsBanner {
+    width: 300;
+    padding: 10px;
+}
+
+.news-title {
+    padding: 10px 0;
+}
+
+.news{
+    display: flex;
+}
+.ad-container {
+    display: flex;
+    flex-direction: column;
+    /* Additional styling */
+}
+
+.adDiv {
+    margin-bottom: 20px; /* Spacing between ads */
+    /* Other necessary styles for the ads */
+}
+
+.adDiv img{
+    width: 220px;
+}
+
+.content-wrap{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+/* swiper part  */
+
+.swiper{
+    padding: 50px;
+    /* background-color:#f2efef; */
+}
+
+/* .swiper .swiper-body .mySwiper swiper-slide{
+    background-color: #ffffff;
+} */
+swiper-container {
+    width: 100%;
+    height: 100%;
+}
+
+swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #f2efef;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* footer */
+.footer-information {
+    background-color: #1c1f20;
+    height: auto;
+
+}
+
+.footer-container {
+    margin: 0 70px;
+}
+
+.footer-top {
+    padding: 30px 0;
+    color: white;
+    height: 300px;
+}
+
+/* Link styles */
+.underline-animation {
+    margin-top: 10px;
+}
+
+.link-decoration {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.headlines{
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+    position: relative;
+
+}
+
+.line {
+    width: 90%; /* Adjust the width of the line */
+    border-bottom: 1px solid black; /* You can change the line style */
+    margin-bottom: 10px; /* Adjust the margin as needed */
+    margin-left: 5%;
+    
+  }
+  
+.card-content{
+    padding-left: 20px;
+}
+.NewsHeading{
+    position: absolute;
+    top: -20px; /* Adjust the positioning of the heading */
+    left: 50%; /* Center the heading horizontally */
+    transform: translateX(-50%);
+    background-color: #f2efef;
+    padding: 0 10px; /* Add padding to the heading */
+}
+
+.second-Swiper{
+    padding: 25px;
+}
+
+/* .second-Swiper{
+    background-color: #ffffff;
+} */

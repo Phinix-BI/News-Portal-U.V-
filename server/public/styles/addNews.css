@@ -1,0 +1,150 @@
+
+    .nav-bar{
+        height: 50px;
+        font-size: 24px;
+        padding: 5px 0;
+        color: #4F200D;
+        font-family: 'Roboto Serif', serif;
+        background-color:#BA90C6;
+    }
+    .nav-bar i{
+        margin-left:20px;
+    }
+    .nav-bar span{
+        margin-left:5px;
+    }
+    
+     
+      input[type="file"] {
+        display: none;
+      }
+    
+      main input,textarea {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+      }
+      
+      #drop-area,#drop-area-other {
+        border: 2px dashed #ccc;
+        border-radius: 8px;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+    }
+    
+    #drop-area.highlight,#drop-area-other.highlight {
+        border-color: #333;
+    }
+
+    .container label {
+        display: block;
+        position: relative;
+        background-color: #025bee;
+        color: #ffffff;
+        font-size: 1.1em;
+        text-align: center;
+        width: 16em;
+        padding: 1em 0;
+        border-radius: 0.3em;
+        margin: 5em auto 1em auto;
+        cursor: pointer;
+      }
+      #image-display,#image-display-other {
+        position: relative;
+        width: 90%;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-evenly;
+        gap: 1.25em;
+        flex-wrap: wrap;
+      }
+    
+      #image-display,#image-display-other figure {
+        width: 45%;
+      }
+      #image-display img {
+        width: 100%;
+      }
+      #image-display-other img {
+        width: 100%;
+      }
+      #image-display,#image-display-other figcaption {
+        font-size: 0.8em;
+        text-align: center;
+        color: #5a5861;
+      }
+     .close-icon {
+    position: absolute;
+    top: -15%;
+    right:12%;
+    cursor: pointer;
+    font-size: 3em;
+    padding: 0.2em 0.5em;
+   
+} 
+button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+        #newsContent {
+            display: block;
+            overflow-y: auto;
+            resize:vertical;
+        }
+
+        /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #c266db #f5f5f5;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #f5f5f5;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #c266db;
+    border-radius: 11px;
+    border: 3px solid #ffffff;
+  }
+
+         /* Media Query for Tablets */
+         @media (max-width: 768px) {
+          .container lable {
+              /* padding: 10px; */
+              width: 200px;
+          }
+      }
+
+      /* Media Query for Phones */
+      @media (max-width: 480px) {
+        .container label {
+              font-size: 10px;
+              width: 150px;
+          }
+          .close-icon {
+            position: relative;
+            bottom: 180px;
+            left: 100px;
+            cursor: pointer;
+            font-size: 3em;
+            padding: 0.2em 0.5em;
+           
+        } 
+      }
+      

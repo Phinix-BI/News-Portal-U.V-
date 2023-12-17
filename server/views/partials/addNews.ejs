@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin Panel</title>
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" type="text/css" href="/styles/adminPanel.css">
+	<link rel="stylesheet" type="text/css" href="/styles/addNews.css">
+	<script src="https://kit.fontawesome.com/abfccd6663.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+	<link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_green.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/clockpicker/dist/jquery-clockpicker.min.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/clockpicker/dist/jquery-clockpicker.min.js"></script>
+</head>
+
+<body>
+	<style>
+		.responsive-image {
+			max-width: 100%;
+			height: auto;
+		}
+		/* Styling for the date and time input */
+		input[type="text"]#date, input[type="text"]#time {
+			padding: 10px;
+			font-size: 18px;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			width: 15%;
+			margin-top: 10px;
+			background: #fff;
+			box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+			text-align: center;
+			cursor: pointer;
+		  }
+		  
+		  /* Style the cursor on hover */
+		  input[type="text"]#date:hover, input[type="text"]#time:hover {
+			background: #f2f2f2;
+		  }
+		  
+		  /* Style the input when it's focused */
+		  input[type="text"]#date:focus, input[type="text"]#time:focus {
+			border: 1px solid #007BFF; /* Border color when focused */
+			box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4); /* Box shadow when focused */
+		  }
+	</style>
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">AdminPanel</span>
+		</a>
+		<ul class="side-menu top">
+			<li>
+				<a href="/adminPage">
+					<i class='bx bxs-dashboard'></i>
+					<span class="text">Dashboard</span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="#">
+					<i class='bx bxs-shopping-bag-alt'></i>
+					<span class="text">Add News</span>
+				</a>
+			</li>
+			<li>
+				<a href="/Analytics">
+					<i class='bx bxs-doughnut-chart'></i>
+					<span class="text">Analytics</span>
+				</a>
+			</li>
+			<li>
+				<a href="/allNews">
+					<i class='bx bxs-message-dots'></i>
+					<span class="text">All News</span>
+				</a>
+			</li>
+			<li>
+				<a href="/upcoming">
+					<i class='bx bxs-group'></i>
+					<span class="text">Upcoming Posts</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="/setting">
+					<i class='bx bxs-cog'></i>
+					<span class="text">Settings</span>
+				</a>
+			</li>
+			<li>
+				<a href="/logout" class="logout">
+					<i class='bx bxs-log-out-circle'></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a href="#" class="nav-link">Categories</a>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search...">
+					<button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+				</div>
+			</form>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+			<!-- <a href="#" class="notification">
+				<i class='bx bxs-bell' ></i>
+				<span class="num">8</span>
+			</a> -->
+			<a href="#" class="profile">
+				<%if(locals.admin_post){  %>
+				<img src="/uploads/<%= admin_post.admin_img %>">
+				<% }else{ %>
+				<img src="images/people.png">
+				<%  } %>
+
+			</a>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					<h1><i class='bx bxs-news'></i>&nbsp;&nbsp;<%= heading %></h1>
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Dashboard</a>
+						</li>
+						<li><i class='bx bx-chevron-right'></i></li>
+						<li>
+							<a class="active" href="#"><%= heading %></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<br>
+			<br>
+			<% if (locals.post) { %>
+			<form id="newPostForm" method="post" <% if(!post.postDate || !post.postTime ) {%>  action="/api/posts/<%=post._id%>" <%}else{  %> action="/api/upcoming-posts/<%=post._id%>" <% } %> enctype="multipart/form-data">
+				<div id="drop-area">
+					<div class="container">
+						<!-- uploads\<%#= post.banner_img %> -->
+						<% if (post.banner_img) { %>
+						<h3 class="color_change">Previous Banner Image</h3>
+						<img src="\uploads\<%= post.banner_img %>" class="responsive-image" alt="Existing Image"
+							width="20%">
+						<% } %>
+
+						<input type="file" id="upload-button" name="banner_img" accept="image/*" />
+						<label for="upload-button"><i class="fa-solid fa-upload"></i>&nbsp;Cover Photo <br>(Choose Or
+							Drop Photos)
+						</label>
+						<div id="error"></div>
+						<div id="image-display"></div>
+					</div>
+				</div>
+				<br>
+				<label for="caption" class="color_change">Image Caption:</label>
+				<input type="text" id="caption" name="caption" value="<%= post.img_caption %>">
+				<br>
+				<label for="title" class="color_change">Title:</label>
+				<input type="text" id="title" name="title" value="<%=post.title %>">
+				<br>
+				<label for="content" class="color_change">Content:</label>
+				<!-- <textarea id="content" name="content" rows="4"></textarea> -->
+				<textarea id="newsContent" name="newsContent" rows="12"><%=post.content %></textarea>
+				<br>
+				<p>Schedule Upcoming Post Date:</p>
+				
+				<label for="date" class="color_change"><i class="fa-solid fa-calendar-days"></i>&nbsp;</label>
+				<input type="text" id="date"  autocomplete="off" name="date" value="<%=post.postDate %>"> &nbsp;&nbsp;&nbsp;
+				<label for="time" class="color_change"><i class="fa-solid fa-clock"></i>&nbsp;</label>
+				<input type="text" id="time"  autocomplete="off" name="time" value="<%=post.postTime %>">
+				<br>
+				<br>
+				<button type="submit">Post</button>
+			</form>
+			<% }else{ %>
+			<form id="newPostForm" method="post" action="/api/posts" enctype="multipart/form-data">
+				<div id="drop-area">
+					<div class="container">
+						<input type="file" id="upload-button" name="banner_img" accept="image/*" />
+						<label for="upload-button"><i class="fa-solid fa-upload"></i>&nbsp;Cover Photo <br>(Choose Or
+							Drop Photos)
+						</label>
+						<div id="error"></div>
+						<div id="image-display"></div>
+					</div>
+				</div>
+				<br>
+				<label for="caption" class="color_change">Image Caption:</label>
+				<input type="text" id="caption" name="caption">
+				<br>
+				<label for="title" class="color_change">Title:</label>
+				<input type="text" id="title" name="title">
+				<br>
+				<label for="content" class="color_change">Content:</label>
+
+				<textarea id="newsContent" name="newsContent"></textarea>
+
+				<br>
+				<p>Schedule Upcoming Post Date:</p>
+				
+				<label for="date" class="color_change"><i class="fa-solid fa-calendar-days"></i>&nbsp;</label>
+				<input type="text" id="date"  autocomplete="off" name="date"> &nbsp;&nbsp;&nbsp;
+				<label for="time" class="color_change"><i class="fa-solid fa-clock"></i>&nbsp;</label>
+				<input type="text" id="time"  autocomplete="off" name="time" >
+				<br>
+				<br>
+				<!-- <div id="drop-area-other">
+					<div class="container">
+						<input type="file" id="upload-button-other" name="other_img" multiple accept="image/*" />
+						<label for="upload-button-other"><i class="fa-solid fa-upload"></i>&nbsp;Cover Photo <br>(Choose
+							Or Drop Photos)
+						</label>
+						<div id="error-other"></div>
+						<div id="image-display-other"></div>
+					</div>
+				</div> -->
+
+				<button type="submit">Post</button>
+			</form>
+			<% } %>
+
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+
+	<script src="/assets/tinymce/tinymce.min.js"></script>
+	<script src="/assets/js/admin.js"></script>
+	<script src="/assets/js/addNews.js"></script>
+
+	<!-- text editor code -->
+
+	<script>
+		tinymce.init({
+			selector: '#newsContent',
+			branding: false,
+			promotion: false,
+			height: 500,
+			plugins: [
+				'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'prewiew', 'anchor', 'pagebreak',
+				'searchreplace', 'wordcount', 'insertdatetime', 'media',
+
+			],
+			toolbar: 'undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify |' +
+				'bullist numlist | link image media | ' +
+				'forecolor backcolor ',
+
+			menubar: 'file edit insert format',
+			content_style: 'body{font-family:Helvetica,Arial,sans-serif; font-size:16px}'
+		});
+
+		
+		  $(document).ready(function() {
+			flatpickr("#date", {
+				enableTime: false,  // Enable time selection
+				dateFormat: "Y-m-d",  // Date and time format
+				
+			  });
+
+
+			$('#time').clockpicker({
+			  donetext: 'Done',  // Label for the "Done" button
+			  autoclose: true,  // Close the picker when a time is selected
+			  afterDone: function() {
+				// Handle any actions after a time is selected
+			  },
+			  placement: "top"
+			});
+		  });
+	</script>
+</body>
+
+</html>
