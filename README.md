@@ -9,9 +9,9 @@ Welcome to NewsPortal, a web-based news portal where users can read the top news
 Follow these steps to run the project locally:
 
 1. Open the Command Line by pressing Win + r and then typing 'cmd'.
-2. Clone the GitHub repository: 'git clone https://github.com/R1MO9/NewsPortal.git'
-3. Change the directory to the project folder: 'cd NewsPortal'
-4. Start the server using Nodemon: 'Nodemon index.js'
+2. Clone the GitHub repository: 'git clone https://github.com/Phinix-BI/News-Portal-U.V-.git'
+3. Change the directory to the project folder: 'cd News-Portal-U.V-'
+4. For Starting the server use : 'npm start'
 5. Open your web browser and navigate to [http://localhost:3000/](http://localhost:3000/).
 
 ## Tools & Technology
@@ -22,6 +22,8 @@ Follow these steps to run the project locally:
 - Bootstrap
 - Node.js
 - EJS
+- React
+- MongoDb
 
 ## Plugins
 
