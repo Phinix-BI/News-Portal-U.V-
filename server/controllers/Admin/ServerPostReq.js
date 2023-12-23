@@ -119,6 +119,7 @@ export const newsData = async (req, res) => {
   const title = req.body.title;
   const newsContent = req.body.newsContent;
   const caption = req.body.caption;
+  const catgeory = req.body.catgeory;
   const postTime = req.body.time;
   const postDate = req.body.date;
 
@@ -129,6 +130,7 @@ export const newsData = async (req, res) => {
   let requestData = {
     title: title,
     content: newsContent,
+    catgeory : catgeory,
     img_caption: caption,
     postDate: postDate,
     postTime: postTime,
@@ -165,6 +167,7 @@ export const newsData = async (req, res) => {
         news_No: counter.count,
         banner_img: requestData.banner_img,
         img_caption: requestData.img_caption,
+        catgeory : requestData.catgeory,
         title: requestData.title,
         content: requestData.content,
         date: formattedDate,
@@ -194,6 +197,7 @@ export const newsData = async (req, res) => {
         banner_img: requestData.banner_img,
         img_caption: requestData.img_caption,
         title: requestData.title,
+        catgeory : requestData.catgeory,
         content: requestData.content,
         date: formattedDate,
         postDate: requestData.postDate,
@@ -222,11 +226,13 @@ export const postsById = async (req, res) => {
   const title = req.body.title;
   const newsContent = req.body.newsContent;
   const caption = req.body.caption;
+  const catgeory = req.body.catgeory;
 
   let requestData = {
     title: title,
     content: newsContent,
     img_caption: caption,
+    catgeory:catgeory
   };
 
   if (req.file) {
@@ -250,6 +256,9 @@ export const postsById = async (req, res) => {
       // Update the post data
       if (requestData.title) {
         post.title = requestData.title;
+      }
+      if (requestData.catgeory) {
+        post.catgeory = requestData.catgeory;
       }
       if (requestData.img_caption) {
         post.img_caption = requestData.img_caption;
@@ -287,6 +296,7 @@ export const updateUpcomingNews = async (req, res) => {
   const id = req.params.id;
   const title = req.body.title;
   const newsContent = req.body.newsContent;
+  const catgeory = req.body.catgeory;
   const caption = req.body.caption;
   const postTime = req.body.time;
   const postDate = req.body.date;
@@ -294,6 +304,7 @@ export const updateUpcomingNews = async (req, res) => {
   let requestData = {
     title: title,
     content: newsContent,
+    catgeory:catgeory,
     img_caption: caption,
     postTime: postTime,
     postDate: postDate,
@@ -322,6 +333,10 @@ export const updateUpcomingNews = async (req, res) => {
       // Update the post data
       if (requestData.title) {
         post.title = requestData.title;
+      }
+      
+      if (requestData.catgeory) {
+        post.catgeory = requestData.catgeory;
       }
       if (requestData.postDate) {
         post.postDate = requestData.postDate;

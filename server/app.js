@@ -4,7 +4,7 @@ import countapi from 'countapi-js';
 // for admin authentication
 import session from "express-session";
 import mongoose from "mongoose";
-
+import cors from "cors";
 import axios from "axios";
 //npm module for file storeing in local storage
 import multer from "multer";
@@ -30,9 +30,15 @@ import { hashPassword , verifyPassword , authenticateUser} from "./controllers/A
 
 import { adminData, adminLoginCheck, newsData, postsById, updateUpcomingNews ,countPageViews } from "./controllers/Admin/ServerPostReq.js";
 
+import PostNews from "./models/PostNews.js"
 
 const port = 3000;
 const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:3001',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}));
 
 app.use('/api',postRoutes);
 app.use('/api',adminRoutes);
@@ -88,7 +94,17 @@ const upload = multer({
   storage: storage,
 });
 
+// app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
+app.get('/api/getImageURL', (req, res) => {
+  const { filename } = req.query;
+  if (!filename) {
+    return res.status(400).json({ error: 'Filename is required' });
+  }
+  // Construct and send the URL based on the filename
+  const imageUrl = `/uploads/${filename}`; // Modify the path as per your folder structure
+  res.json({ imageUrl });
+});
 // another pages of admin panel 
 
 app.get("/addNews", authenticateUser, addNews);
@@ -102,6 +118,7 @@ app.get("/upcoming/edit/:id", authenticateUser, upcomingNewsById);
 // Route to render the main page
 app.get("/allNews", authenticateUser, allNews);
 
+
 // render upcoming posts
 app.get("/upcoming", authenticateUser,upcomingNews);
 
@@ -109,6 +126,19 @@ app.get("/upcoming", authenticateUser,upcomingNews);
 
 app.get("/setting", authenticateUser, settingPage);
 
+app.get('/api/v2/posts', async (req, res) => {
+
+  
+  const category = req.query.category; // Get the category from the query parameter
+
+  try {
+    // Fetch posts filtered by the category (assuming 'category' is a field in your Post model)
+    const posts = await PostNews.find({ category: category }).exec();
+    res.json({ results: posts }); // Send the filtered posts as JSON response
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
 
 // Delete a post
 app.get("/api/posts/delete/:id", authenticateUser, deleteFromAllnews);

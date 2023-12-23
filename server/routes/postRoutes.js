@@ -26,6 +26,7 @@ function paginatedResults(model) {
           results.next = {
             page: page + 1,
             limit: limit,
+            totalDocuments : totalDocuments
           };
         }
   
