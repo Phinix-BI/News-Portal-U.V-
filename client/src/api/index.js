@@ -1,5 +1,9 @@
-import axios from "axios";
+let baseurl = '';
 
-const url = 'http://localhost:3000';
+// if (process.env.NODE_ENV === 'development') {
+//   baseurl = 'http://localhost:3000';
+// } else {
+  baseurl = 'https://distributions-cherry-processing-defining.trycloudflare.com';
+// }
 
-export const fetchPost = () => axios.get(url);
+export const url = baseurl;

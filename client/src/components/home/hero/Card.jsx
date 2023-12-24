@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import {url} from "../../../../src/api/index";
 
 const Card = ({ item: { _id, banner_img, title, content, date } }) => {
   const [imageUrl, setImageUrl] = useState("");
 
   useEffect(() => {
     // Fetch image URL from the server using the image file name (banner_img)
-    axios.get(`http://localhost:3000/api/getImageURL?filename=${banner_img}`)
+    axios.get(`${url}/api/getImageURL?filename=${banner_img}`)
       .then(response => {
         setImageUrl(response.data.imageUrl);
       })
@@ -20,7 +21,7 @@ const Card = ({ item: { _id, banner_img, title, content, date } }) => {
     <div className='box'>
       <div className='img'>
         {/* Display image once imageUrl is fetched */}
-        {imageUrl && <img src={`http://localhost:3000${imageUrl}`} alt='' />}
+        {imageUrl && <img src={`${url}${imageUrl}`} alt='' />}
       </div>
       {/* Other parts of the card component remain the same */}
       <div className='text'>

@@ -1,14 +1,14 @@
-/* .popularPost .box {
+.popularPost .box {
   margin: 15px 15px 15px 0;
 }
 .popularPost img {
   width: 100%;
   height: 100%;
-} */
+}
 .popularPost .text {
   padding: 20px;
 }
-.images {
+.Life-images,.ppost-images {
   width: 100%; /* Adjust as needed */
   height: 200px; /* Set the desired height */
   overflow: hidden; /* Hide any overflowing content */
@@ -17,7 +17,7 @@
 .images .img{
   margin-right: 10px;
 }
-.img img {
+.Life-img,.ppost-img img {
   width: 100%;
   height: 100%;
   object-fit: cover; /* Maintain aspect ratio and cover the entire space */

@@ -2,23 +2,23 @@ import React, { useState, useEffect } from "react";
 import "./hero.css";
 import Card from "./Card";
 import axios from "axios";
-
+import {url} from "../../../../src/api/index";
 const Hero = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/api/posts')
+    axios.get(`${url}/api/posts`)
       .then((response) => {
         const totalPosts = response.data.next.totalDocuments || 0;
         const totalPages = Math.ceil(totalPosts / 5);
   
-        axios.get(`http://localhost:3000/api/posts?page=${totalPages}`)
+        axios.get(`${url}/api/posts?page=${totalPages}`)
           .then((newResponse) => {
             if (newResponse.data && newResponse.data.results.length >= 4) {
               setItems(newResponse.data.results.slice(-4));
             } else if (totalPages > 1) {
               // Fetch from the previous page if the last page contains less than 4 items
-              axios.get(`http://localhost:3000/api/posts?page=${totalPages - 1}`)
+              axios.get(`${url}/api/posts?page=${totalPages - 1}`)
                 .then((previousResponse) => {
                   if (previousResponse.data && previousResponse.data.results) {
                     setItems(previousResponse.data.results.slice(-4));

@@ -36,7 +36,7 @@ const port = 3000;
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3001',
+  origin:[ 'https://insights-insight-thick-prison.trycloudflare.com','http://localhost:3001'],
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }));
 
@@ -128,12 +128,11 @@ app.get("/setting", authenticateUser, settingPage);
 
 app.get('/api/v2/posts', async (req, res) => {
 
-  
   const category = req.query.category; // Get the category from the query parameter
-
+    console.log(category);
   try {
     // Fetch posts filtered by the category (assuming 'category' is a field in your Post model)
-    const posts = await PostNews.find({ category: category }).exec();
+    const posts = await PostNews.find({ catgeory: category }).exec();
     res.json({ results: posts }); // Send the filtered posts as JSON response
   } catch (error) {
     res.status(500).json({ message: error.message });

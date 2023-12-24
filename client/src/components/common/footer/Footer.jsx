@@ -58,10 +58,15 @@ const Footer = () => {
       </footer>
       <div className='legal  '>
         <div className='container flexSB'>
-          <p>© all rights reserved</p>
-          <p>
-            made with <i className='fa fa-heart'></i> by gorkhcoder
-          </p>
+        <a href="https://www.instagram.com/_thedeveloperguy">Thank you for visiting! © 2023 All Rights Reserved. Crafted with passion by <span class="developer-name">The Developer Guy Team</span>. 
+        Follow our journey on Instagram for more insights and updates!
+        &nbsp;<i class="fa-brands fa-instagram"></i></a>
+          {/* <p>© all rights reserved</p> */}
+         
+          {/* <p>
+            made  by The Developer Guy <i class="fa-brands fa-instagram"></i>
+          </p> */}
+          
         </div>
       </div>
     </>

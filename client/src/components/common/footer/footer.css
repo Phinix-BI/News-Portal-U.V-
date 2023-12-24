@@ -60,3 +60,12 @@ footer ul li span::before {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
+/* .flexSB{
+  text-align: center;
+ 
+} */
+.flexSB a{
+  text-decoration: none;
+  color: #fff;
+}

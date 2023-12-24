@@ -50,7 +50,6 @@ router.get('/posts',paginatedResults(PostNews),getPosts);
 
 router.get("/posts/:id",getPostsById);
 
-
 // DELETE a specific post by providing the post id
 router.delete("/posts/:id",deletePost);
 

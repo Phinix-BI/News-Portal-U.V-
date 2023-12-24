@@ -2,6 +2,10 @@ import React, { useState } from "react"
 import Head from "./Head"
 import "./header.css"
 import { Link } from "react-router-dom"
+import {url} from "../../../../src/api/index";
+
+console.log(url);
+const adminLink = `${url}/Admin_Login`;
 
 const Header = () => {
   const [navbar, setNavbar] = useState(false)
@@ -17,22 +21,26 @@ const Header = () => {
                 <Link to='/'>Home</Link>
               </li>
               <li>
-                <Link to='/culture'>Culture</Link>
+                <Link to='/hero'>Recent</Link>
               </li>
               <li>
-                <Link to='/politics'>Politics</Link>
+                <Link to='/popular'>Popular</Link>
               </li>
               <li>
-                <Link to='/memes'>Memes</Link>
+                <Link to='/music'>Music</Link>
               </li>
               <li>
                 <Link to='/sports'>Sports</Link>
               </li>
               <li>
-                <Link to='/boxed'>Boxed</Link>
+                <Link to='/life'>Lifestyle</Link>
               </li>
               <li>
                 <Link to='/reviews'>Reviews</Link>
+              </li>
+              <li>
+               {/* Use an anchor tag for external links */}
+               <a href={adminLink} target='_blank' rel='noopener noreferrer'>Admin</a>
               </li>
             </ul>
             <button className='barIcon' onClick={() => setNavbar(!navbar)}>

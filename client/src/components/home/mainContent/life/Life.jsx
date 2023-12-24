@@ -3,6 +3,7 @@ import Slider from "react-slick";
 import Heading from "../../../common/heading/Heading";
 import axios from "axios";
 import "../Ppost/ppost.css";
+import {url} from "../../../../../src/api/index";
 
 const Life = () => {
   const settings = {
@@ -17,7 +18,7 @@ const Life = () => {
       {
         breakpoint: 800,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 1,
           slidesToScroll: 1,
         },
       },
@@ -28,7 +29,7 @@ const Life = () => {
   useEffect(() => {
     const fetchImageURL = async (filename) => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/getImageURL?filename=${filename}`);
+        const response = await axios.get(`${url}/api/getImageURL?filename=${filename}`);
         return response.data.imageUrl;
       } catch (error) {
         console.error("Error fetching image:", error);
@@ -36,7 +37,7 @@ const Life = () => {
       }
     };
 
-    axios.get('http://localhost:3000/api/posts')
+    axios.get(`${url}/api/posts`)
       .then((response) => {
         const totalPosts = response.data.next.totalDocuments || 0;
         const totalPages = Math.ceil(totalPosts / 5);
@@ -53,7 +54,7 @@ const Life = () => {
         }
 
         Promise.all(
-          pageNumbersToFetch.map(page => axios.get(`http://localhost:3000/api/posts?page=${page}`))
+          pageNumbersToFetch.map(page => axios.get(`${url}/api/posts?page=${page}`))
         ).then(async (pageResponses) => {
           let fetchedItems = [];
           for (const pageResponse of pageResponses) {
@@ -84,9 +85,9 @@ const Life = () => {
           {items.map((val, index) => (
             <div className='items' key={index}>
               <div className='box shadow'>
-                <div className='images'>
-                  <div className='img'>
-                    {val.imageUrl && <img src={`http://localhost:3000${val.imageUrl}`} alt='' />}
+                <div className='images Life-images'>
+                  <div className='img Life-img'>
+                    {val.imageUrl && <img src={`${url}${val.imageUrl}`} alt='' />}
                   </div>
                   <div className='category category1'>
                     <span>{val.catgeory}</span>
