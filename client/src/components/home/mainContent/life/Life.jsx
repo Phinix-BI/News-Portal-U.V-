@@ -94,11 +94,13 @@ const Life = () => {
                   </div>
                 </div>
                 <div className='text'>
+                 <a href={`/SinglePage/${val._id}` }>
                   <h1 className='title'>{val.title.slice(0, 40)}...</h1>
                   <div className='date'>
                     <i className='fas fa-calendar-days'></i>
                     <label>{val.date}</label>
                   </div>
+                  </a>
                 </div>
               </div>
             </div>

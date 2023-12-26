@@ -8,6 +8,7 @@
 .hero .box {
   position: relative;
   padding: 30px;
+  cursor: pointer;
 }
 .hero img {
   width: 100%;

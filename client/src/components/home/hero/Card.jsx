@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import axios from "axios";
 import {url} from "../../../../src/api/index";
 
@@ -27,9 +27,9 @@ const Card = ({ item: { _id, banner_img, title, content, date } }) => {
       <div className='text'>
         {/* Assuming 'category' is not present in your data */}
         {/* <span className='category'>{category}</span> */}
-        <Link to={`/SinglePage/${_id}`}>
+        <a href={`/SinglePage/${_id}`}>
           <h1 className='titleBg'>{title}</h1>
-        </Link>
+        </a>
         {/* Author and time fields may need to be adjusted based on your data */}
         <div className='author flex'>
           {/* Replace 'authorName' and 'time' with appropriate fields from your data */}

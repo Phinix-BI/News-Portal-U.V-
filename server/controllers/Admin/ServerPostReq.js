@@ -453,7 +453,8 @@ export const countPageViews = async (req, res) => {
 
       // res.status(200).send('Count updated successfully');
       // res.send("API is working Fine.");
-      res.render("index.ejs");
+      // res.render("index.ejs");
+      res.render("partials/random404.ejs")
     }
 
 

@@ -87,14 +87,16 @@ const Popular = () => {
                 <div className='items' key={index}>
                   <div className='box shadow'>
                     <div className='images row'>
+                   
                       <div className='img'>
                         {val.imageUrl && <img src={`${url}${val.imageUrl}`} alt='' />}
                       </div>
                       <div className='category category1'>
                         <span>{val.catgeory}</span>
                       </div>
-                    </div>
+                    </div> 
                     <div className='text row'>
+                    <a href={`/SinglePage/${val._id}` }>
                       <h1 className='title'>{val.title.slice(0, 40)}...</h1>
                       <div className='date'>
                         <i className='fas fa-calendar-days'></i>
@@ -104,8 +106,11 @@ const Popular = () => {
                         <i className='fas fa-comments'></i>
                         <label>{val.comments}</label>
                       </div>
+                      </a>
                     </div>
+                    
                   </div>
+                  
                 </div>
               )
             })}

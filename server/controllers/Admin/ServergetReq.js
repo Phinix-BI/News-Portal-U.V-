@@ -286,7 +286,7 @@ export const adminDashboard =  async (req, res) => {
         // Handle the error if necessary
       } else {
         // Redirect to the login page or any other desired destination after logout
-        res.redirect("/");
+        res.redirect("http://localhost:3001");
       }
     });
   };

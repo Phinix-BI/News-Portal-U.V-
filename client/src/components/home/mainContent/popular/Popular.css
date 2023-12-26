@@ -30,3 +30,8 @@
   padding: 5px 0 0 20px;
   margin-top: 5px;
 }
+
+.popular .text a{
+  text-decoration: none;
+  color: black;
+}

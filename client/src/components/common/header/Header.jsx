@@ -18,7 +18,7 @@ const Header = () => {
           <nav>
             <ul className={navbar ? "navbar" : "flex"} onClick={() => setNavbar(false)}>
               <li>
-                <Link to='/'>Home</Link>
+                <a href='/'>Home</a>
               </li>
               <li>
                 <Link to='/hero'>Recent</Link>

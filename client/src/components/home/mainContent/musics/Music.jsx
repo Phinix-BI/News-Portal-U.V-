@@ -80,6 +80,7 @@ const Music = () => {
                   </div>
                 </div>
                 <div className='text'>
+                <a href={`/SinglePage/${val._id}` }>
                   <h1 className='title'>{val.title.slice(0, 40)}...</h1>
                   <div className='date'>
                     <i className='fas fa-calendar-days'></i>
@@ -92,6 +93,7 @@ const Music = () => {
                     <i className='fas fa-comments'></i>
                     <label>{val.comments}</label>
                   </div>
+                  </a>
                 </div>
               </div>
             </div>

@@ -36,7 +36,7 @@ const port = 3000;
 const app = express();
 
 app.use(cors({
-  origin:[ 'https://insights-insight-thick-prison.trycloudflare.com','http://localhost:3001'],
+  origin:[ 'https://rate-force-faqs-var.trycloudflare.com','http://localhost:3001'],
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }));
 
