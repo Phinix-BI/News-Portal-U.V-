@@ -1,2 +1,4 @@
 /.vscode
 /.hintrc
+/.env
+node_modules

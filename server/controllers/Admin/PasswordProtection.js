@@ -11,6 +11,8 @@ import multer from "multer";
 //npm module for hashing
 import bcrypt from "bcryptjs";
 
+import "dotenv/config";
+
 export const authenticateUser = (req, res, next) => {
   if (req.session && req.session.authenticated) {
     // User is authenticated, proceed to the next middleware or route handler
@@ -22,7 +24,7 @@ export const authenticateUser = (req, res, next) => {
 };
 
 export const hashPassword = async (password) => {
-    const saltRounds = 10;
+    const saltRounds = process.env.saltRounds;
     const hash = await bcrypt.hash(password, saltRounds);
     return hash;
   };

@@ -60,7 +60,7 @@ app.use("/api", upcomingRoutes);
 app.use("/api", adminRoutes);
 app.use("/api", viewsCounterRoutes);
 
-const BASE_URL = 'http://localhost:3000/api';
+const BASE_URL = `${process.env.BASEURL}/api`;
 
 export const adminLoginCheck = async (req, res) => {
   const adminId = req.body.adminId;

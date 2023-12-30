@@ -1,3 +1,3 @@
-export const masterId = "master12494290@admin.secure.self";
+export const masterId = process.env.masterid;
 
-export const masterKey = "tRg!v&z#2$v2$9p&z#L6";
+export const masterKey = process.env.masterPass;

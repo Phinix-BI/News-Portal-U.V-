@@ -2,3 +2,4 @@
 /.hintrc
 /index.js
 /newsApi.js
+/.env

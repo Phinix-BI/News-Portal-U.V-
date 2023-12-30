@@ -10,6 +10,7 @@ import axios from "axios";
 import multer from "multer";
 //npm module for hashing
 import bcrypt from "bcryptjs";
+import "dotenv/config"
 
 import postCounterRoutes from '../../routes/postCounterRoutes.js';
 
@@ -39,7 +40,7 @@ export const errorPage = (req, res) => {
     res.render("partials/random404.ejs");
   };
 
-  const BASE_URL = 'http://localhost:3000/api';
+  const BASE_URL = `${process.env.BASEURL}/api`;
 
 export const adminDashboard =  async (req, res) => {
     try {
@@ -286,7 +287,7 @@ export const adminDashboard =  async (req, res) => {
         // Handle the error if necessary
       } else {
         // Redirect to the login page or any other desired destination after logout
-        res.redirect("http://localhost:3001");
+        res.redirect(process.env.clientUrl);
       }
     });
   };

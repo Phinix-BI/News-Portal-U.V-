@@ -6,6 +6,6 @@ import adminModel from "../models/adminModel.js";
 
 const router = express.Router();
   
-router.get("/admin/posts",getAdminData );
+router.get("/admin/posts",getAdminData);
 
 export default router;

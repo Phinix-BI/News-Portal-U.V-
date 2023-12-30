@@ -10,6 +10,7 @@ import axios from "axios";
 import multer from "multer";
 //npm module for hashing
 import bcrypt from "bcryptjs";
+import "dotenv/config";
 
 // all routes for news post,delete,patch
 import postRoutes from './routes/postRoutes.js';
@@ -36,7 +37,7 @@ const port = 3000;
 const app = express();
 
 app.use(cors({
-  origin:[ 'https://rate-force-faqs-var.trycloudflare.com','http://localhost:3001'],
+  origin:[process.env.clientUrl],
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }));
 
@@ -56,10 +57,11 @@ mongoose.connect("mongodb://127.0.0.1:27017/NewsDb", {
   useNewUrlParser: true
 })
 
+
 // Set up express-session middleware (we use this for admin panel authentication)
 app.use(
   session({
-    secret: "c957fa32c75dcd49f0becb7346e566b529a4795ef001a640b6b0ea1c74dea2ca", // Replace with a strong secret key
+    secret: process.env.sessionKey, // Replace with a strong secret key
     resave: true,
     saveUninitialized: true,
   })

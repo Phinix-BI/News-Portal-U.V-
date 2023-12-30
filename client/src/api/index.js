@@ -1,12 +1,11 @@
-let baseurl = '';
+// import 'dotenv/config'
 
-// if (process.env.NODE_ENV === 'development') {
-  baseurl = 'http://localhost:3000';
-// } else {
-  // baseurl = 'https://uh-elementary-patch-pit.trycloudflare.com';
-// }
+// const baseurl = process.env.baseUrl || 'http://localhost:3000';
+  
+const baseurl = 'http://localhost:3000';
 
 export const url = baseurl;
+
 export const fetchDataFromBackend = async () => {
   try {
     const response = await fetch(`${baseurl}/api/posts`); // Replace with your actual backend API endpoint
