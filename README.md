@@ -1,3 +1,9 @@
+<img src="sample/localhost_3001_.png" alt="Description of image">
+<img src="sample/Login.png" alt="Description of image">
+<img src="sample/Dashboard.png" alt="Description of image">
+<img src="sample/ALL News.png" alt="Description of image">
+<img src="sample/Setting.png" alt="Description of image">
+
 # NewsPortal
 
 Welcome to NewsPortal, a web-based news portal where users can read the top news of the day. Additionally, there is an Admin Panel that allows administrators to log in and manage posts, including updating, creating, and deleting them.NewsPortal is a dynamic, full-stack MERN (MongoDB, Express, React, Node.js) news website that provides a comprehensive platform for news consumption and management. Built with React for the frontend and Node.js for the backend, this project delivers an immersive news experience, offering both users and administrators robust functionalities.
