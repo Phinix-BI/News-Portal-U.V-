@@ -1,8 +1,15 @@
-<img src="sample/localhost_3001_.png" alt="Description of image">
-<img src="sample/Login.png" alt="Description of image">
-<img src="sample/Dashboard.png" alt="Description of image">
-<img src="sample/ALL News.png" alt="Description of image">
-<img src="sample/Setting.png" alt="Description of image">
+
+![localhost_3001_](https://github.com/Phinix-BI/News-Portal-U.V-/assets/116413469/0a4a98e3-5606-4a55-9545-ed6e27cd28d6)
+
+![Login](https://github.com/Phinix-BI/News-Portal-U.V-/assets/116413469/7749785f-b5fc-4326-9c5b-49dda90c976e)
+
+![Dashboard](https://github.com/Phinix-BI/News-Portal-U.V-/assets/116413469/3ddeb94c-c58f-41fd-99e1-124a5a1c9f2e)
+
+![ALL News](https://github.com/Phinix-BI/News-Portal-U.V-/assets/116413469/490917b3-ed37-4a37-af8e-50d71fecd0a4)
+
+![Setting](https://github.com/Phinix-BI/News-Portal-U.V-/assets/116413469/d4cacbbd-3419-468f-b5c9-82d965d00d53)
+
+
 
 # NewsPortal
 
