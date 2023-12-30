@@ -4,8 +4,6 @@ Welcome to NewsPortal, a web-based news portal where users can read the top news
 
 <b>Work in Progress....</b>
 
-# Features
-
 ## How to Run
 
 Follow these steps to run the project locally:
